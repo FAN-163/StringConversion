@@ -18,13 +18,13 @@ namespace StringConversion
             {
                 int i = 0;
                 char ch = input[i];
-                int count = 0;
+                bool isSingle = true;
 
                 for (int j = 1; j < input.Length; j++)
                 {
                     if (input[i] == input[j])
                     {
-                        count++;
+                        isSingle = false;
                     }
                 }
 
@@ -33,7 +33,7 @@ namespace StringConversion
                 UniqueChar uniqueChar = new UniqueChar();
                 uniqueChar.Value = ch;
 
-                if (count > 0)
+                if (!isSingle)
                 {
                     uniqueChar.IsSingle = false;
                 }

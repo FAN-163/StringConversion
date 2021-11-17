@@ -13,15 +13,15 @@ namespace StringConversion
 
         public string Сonversion(string input, List<UniqueChar> uniqueChars)
         {
-            foreach (UniqueChar uniqueChar in uniqueChars)
+            char[] chars = input.ToCharArray();
+
+            for(int i = 0; i < chars.Length; i++)
             {
-                if (uniqueChar.IsSingle)
-                    input = input.Replace(uniqueChar.Value.ToString(), singleChar.ToString());
-                
-                else if(!uniqueChar.IsSingle)
-                    input = input.Replace(uniqueChar.Value.ToString(), recurringChar.ToString());
+                UniqueChar uniqueChar = uniqueChars.Find(unique => unique.Value == chars[i]);
+               
+                chars[i] = uniqueChar.IsSingle ? singleChar : recurringChar;
             }
-            return input;
+            return new string(chars);
         }
     }
 }
